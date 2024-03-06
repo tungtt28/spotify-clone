@@ -18,8 +18,14 @@ import { LuMonitorSpeaker, LuPlaySquare } from "react-icons/lu";
 import { MdFullscreen, MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { PiArrowCircleDownLight } from "react-icons/pi";
 import { TbMicrophone2 } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 export default function Search() {
+  const navigate = useNavigate();
+
+  const goToHome = () => {
+    navigate("/");
+  };
   return (
     <div
       style={{
@@ -56,7 +62,10 @@ export default function Search() {
                   class="col-sm-12"
                   style={{ height: 40, width: 273, marginLeft: 20 }}
                 >
-                  <div style={{ padding: 8, cursor: "pointer" }}>
+                  <div
+                    style={{ padding: 8, cursor: "pointer" }}
+                    onClick={goToHome}
+                  >
                     <IoHome
                       style={{
                         height: 30,

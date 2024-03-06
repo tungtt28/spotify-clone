@@ -22,8 +22,14 @@ import { LuMonitorSpeaker } from "react-icons/lu";
 import { HiMiniSpeakerWave } from "react-icons/hi2";
 import { CgMiniPlayer } from "react-icons/cg";
 import { MdFullscreen } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const goToSearch = () => {
+    navigate("/search");
+  };
   return (
     <div
       style={{
@@ -86,7 +92,10 @@ export default function Home() {
                   class="col-sm-12"
                   style={{ height: 40, width: 273, marginLeft: 20 }}
                 >
-                  <div style={{ padding: 8, marginTop: 10, cursor: "pointer" }}>
+                  <div
+                    style={{ padding: 8, marginTop: 10, cursor: "pointer" }}
+                    onClick={goToSearch}
+                  >
                     <CiSearch
                       style={{
                         height: 30,

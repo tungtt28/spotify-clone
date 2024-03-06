@@ -1,5 +1,5 @@
 import React from "react";
-import { FaSpotify } from "react-icons/fa";
+import { FaFacebook, FaSpotify, FaTwitter } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { BiLibrary } from "react-icons/bi";
@@ -8,17 +8,27 @@ import { GrLanguage } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import { IoLogoInstagram } from "react-icons/io";
 
 export default function Register() {
   const navigate = useNavigate();
 
   const goToLogin = () => {
-    navigate("/login"); // Replace "/login" with the actual path to your login page
+    navigate("/login");
   };
 
   const goToSignUp = () => {
-    navigate("/signup"); // Replace "/login" with the actual path to your login page
+    navigate("/signup");
   };
+
+  const goToHome = () => {
+    navigate("/");
+  };
+
+  const goToSearch = () => {
+    navigate("/search");
+  };
+
   return (
     <div
       class="row"
@@ -83,10 +93,22 @@ export default function Register() {
               <div class="col-sm-12">
                 <div style={{ padding: 10 }}>
                   <FaSpotify
-                    style={{ height: 30, width: 30, color: "white" }}
+                    onClick={goToHome}
+                    style={{
+                      height: 30,
+                      width: 30,
+                      color: "white",
+                      cursor: "pointer",
+                    }}
                   />
                   <span
-                    style={{ color: "white", fontWeight: 600, marginLeft: 2 }}
+                    onClick={goToHome}
+                    style={{
+                      color: "white",
+                      fontWeight: 600,
+                      marginLeft: 2,
+                      cursor: "pointer",
+                    }}
                   >
                     Spotify
                   </span>
@@ -95,14 +117,24 @@ export default function Register() {
 
               <div class="col-sm-12">
                 <div style={{ padding: 8 }}>
-                  <IoHome style={{ height: 30, width: 30, color: "white" }} />
+                  <IoHome
+                    onClick={goToHome}
+                    style={{
+                      height: 30,
+                      width: 30,
+                      color: "white",
+                      cursor: "pointer",
+                    }}
+                  />
                   <span
+                    onClick={goToHome}
                     style={{
                       color: "white",
                       fontWeight: 600,
                       marginLeft: 15,
                       position: "relative",
                       top: 4,
+                      cursor: "pointer",
                     }}
                   >
                     Trang Chủ
@@ -111,14 +143,24 @@ export default function Register() {
               </div>
               <div class="col-sm-12">
                 <div style={{ padding: 8 }}>
-                  <CiSearch style={{ height: 30, width: 30, color: "gray" }} />
+                  <CiSearch
+                    onClick={goToSearch}
+                    style={{
+                      height: 30,
+                      width: 30,
+                      color: "gray",
+                      cursor: "pointer",
+                    }}
+                  />
                   <span
+                    onClick={goToSearch}
                     style={{
                       color: "gray",
                       fontWeight: "bolder",
                       marginLeft: 15,
                       position: "relative",
                       top: 4,
+                      cursor: "pointer",
                     }}
                   >
                     Tìm kiếm
@@ -141,7 +183,12 @@ export default function Register() {
               <div class="col-sm-12">
                 <div style={{ padding: 8 }}>
                   <BiLibrary
-                    style={{ height: 30, width: 30, color: "white" }}
+                    style={{
+                      height: 30,
+                      width: 30,
+                      color: "white",
+                      cursor: "pointer",
+                    }}
                   />
                   <span
                     style={{
@@ -150,6 +197,7 @@ export default function Register() {
                       marginLeft: 5,
                       position: "relative",
                       top: 4,
+                      cursor: "pointer",
                     }}
                   >
                     Thư viện
@@ -289,6 +337,7 @@ export default function Register() {
                       border: "1px solid gray",
                       width: 120,
                       marginTop: 30,
+                      cursor: "pointer",
                     }}
                   >
                     <GrLanguage style={{ marginLeft: 10 }} />
@@ -518,6 +567,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -569,6 +619,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -620,6 +671,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -671,6 +723,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -722,6 +775,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -773,6 +827,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -824,6 +879,7 @@ export default function Register() {
               marginLeft: 25,
               marginBottom: 83,
               borderRadius: 10,
+              cursor: "pointer",
             }}
           >
             <img
@@ -864,6 +920,237 @@ export default function Register() {
             >
               chill beats, lofi vibes, new tracks every...
             </span>
+          </div>
+          <div
+            class="row"
+            style={{ marginTop: 30, marginLeft: 15, width: 1616, height: 363 }}
+          >
+            <div class="col-sm-2">
+              <div class="row">
+                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
+                  Công ty
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    marginTop: 10,
+                    cursor: "pointer",
+                  }}
+                >
+                  Giới thiệu
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Việc làm
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  For the record
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="row">
+                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
+                  Cộng đồng
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    marginTop: 10,
+                    cursor: "pointer",
+                  }}
+                >
+                  Dành cho các nghệ sĩ
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Nhà phát triển
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Quảng cáo
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Nhà đầu tư
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Nhà cung cấp
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="row">
+                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
+                  Liên kết hữu ích
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    marginTop: 10,
+                    cursor: "pointer",
+                  }}
+                >
+                  Hỗ trợ
+                </span>
+                <span
+                  style={{
+                    color: "gray",
+                    fontWeight: 500,
+                    height: 30,
+                    cursor: "pointer",
+                  }}
+                >
+                  Ứng dụng di động miễn phí
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-2">
+              <div
+                class="row"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+
+                  gap: 15,
+                }}
+              >
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    border: 1,
+                    borderRadius: "50%",
+                    color: "white",
+                    background: "#292929",
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span>
+                    <IoLogoInstagram
+                      style={{
+                        width: 25,
+                        height: 25,
+                      }}
+                    />
+                  </span>
+                </div>
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    border: 1,
+                    borderRadius: "50%",
+                    color: "white",
+                    background: "#292929",
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span>
+                    <FaTwitter
+                      style={{
+                        width: 22,
+                        height: 22,
+                      }}
+                    />
+                  </span>
+                </div>
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    border: 1,
+                    borderRadius: "50%",
+                    color: "white",
+                    background: "#292929",
+                    display: "flex",
+                    alignItems: "center",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span>
+                    <FaFacebook
+                      style={{
+                        width: 22,
+                        height: 22,
+                      }}
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <hr style={{ color: "white", marginTop: 20 }} />
+            <div
+              style={{
+                height: 46,
+                display: "flex",
+                textAlign: "center",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 14,
+                  color: "gray",
+                }}
+              >
+                © 2024 Spotify AB
+              </span>
+            </div>
+            <div style={{ height: 450 }}></div>
           </div>
         </div>
       </div>
@@ -879,11 +1166,17 @@ export default function Register() {
         }}
       >
         <div
-          style={{ padding: 5, fontSize: 14, fontWeight: 700, marginTop: 2 }}
+          style={{
+            padding: 5,
+            fontSize: 14,
+            fontWeight: 700,
+            marginTop: 2,
+            cursor: "pointer",
+          }}
         >
           Xem trước Spotify
         </div>
-        <div style={{ marginLeft: 3, fontWeight: 500 }}>
+        <div style={{ marginLeft: 3, fontWeight: 500, cursor: "pointer" }}>
           Đăng ký để xem không giới hạn các bài hát và postcast với quảng cáo
           không thường xuyên. Không cần thẻ tín dụng.
         </div>
@@ -904,7 +1197,9 @@ export default function Register() {
             textAlign: "center",
             justifyContent: "center",
             alignItems: "center",
+            cursor: "pointer",
           }}
+          onClick={goToSignUp}
         >
           <span> Đăng ký miễn phí</span>
         </div>
