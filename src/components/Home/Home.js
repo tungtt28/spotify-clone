@@ -30,6 +30,10 @@ export default function Home() {
   const goToSearch = () => {
     navigate("/search");
   };
+
+  const goToPlaylist = () => {
+    navigate("/playlist");
+  };
   return (
     <div
       style={{
@@ -746,7 +750,11 @@ export default function Home() {
                       Hiện tất cả
                     </span>
                   </div>
-                  <div class="row" style={{ gap: "15px" }}>
+                  <div
+                    class="row"
+                    style={{ gap: "15px" }}
+                    onClick={goToPlaylist}
+                  >
                     <div
                       style={{
                         height: 280,
@@ -1162,7 +1170,11 @@ export default function Home() {
                       Hiện tất cả
                     </span>
                   </div>
-                  <div class="row" style={{ gap: "15px" }}>
+                  <div
+                    class="row"
+                    style={{ gap: "15px" }}
+                    onClick={goToPlaylist}
+                  >
                     <div
                       style={{
                         height: 280,

@@ -20,8 +20,18 @@ import { LuMonitorSpeaker, LuPlaySquare } from "react-icons/lu";
 import { MdFullscreen, MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { PiArrowCircleDownLight, PiListThin } from "react-icons/pi";
 import { TbMicrophone2 } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 export default function Favorites() {
+  const navigate = useNavigate();
+
+  const goToSearch = () => {
+    navigate("/search");
+  };
+
+  const goToHome = () => {
+    navigate("/");
+  };
   return (
     <div
       style={{
@@ -58,14 +68,16 @@ export default function Favorites() {
                   class="col-sm-12"
                   style={{ height: 40, width: 273, marginLeft: 20 }}
                 >
-                  <div style={{ padding: 8, cursor: "pointer" }}>
+                  <div style={{ padding: 8 }}>
                     <IoHome
                       style={{
                         height: 30,
                         width: 30,
                         color: "lightgray",
                         marginTop: 10,
+                        cursor: "pointer",
                       }}
+                      onClick={goToHome}
                     />
                     <span
                       style={{
@@ -74,7 +86,9 @@ export default function Favorites() {
                         marginLeft: 20,
                         position: "relative",
                         top: 10,
+                        cursor: "pointer",
                       }}
+                      onClick={goToHome}
                     >
                       Trang Chủ
                     </span>
@@ -84,14 +98,16 @@ export default function Favorites() {
                   class="col-sm-12"
                   style={{ height: 40, width: 273, marginLeft: 20 }}
                 >
-                  <div style={{ padding: 8, marginTop: 10, cursor: "pointer" }}>
+                  <div style={{ padding: 8, marginTop: 10 }}>
                     <CiSearch
                       style={{
                         height: 30,
                         width: 30,
                         color: "lightgray",
                         marginTop: 8,
+                        cursor: "pointer",
                       }}
+                      onClick={goToSearch}
                     />
                     <span
                       style={{
@@ -100,7 +116,9 @@ export default function Favorites() {
                         marginLeft: 20,
                         position: "relative",
                         top: 7,
+                        cursor: "pointer",
                       }}
+                      onClick={goToSearch}
                     >
                       Tìm kiếm
                     </span>
