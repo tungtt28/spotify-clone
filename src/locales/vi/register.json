@@ -1,0 +1,35 @@
+{
+  "register": {
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "library": "Thư viện",
+    "create": "Tạo danh sách phát đầu tiên của bạn",
+    "create1": "Rất dễ! Chúng tôi sẽ giúp bạn",
+    "create2": "Tạo danh sách phát",
+    "podcast": "Hãy cùng tìm và theo dõi một số podcast",
+    "podcast1": "Chúng tôi sẽ cập nhật cho bạn thông tin về các tập mới",
+    "podcast2": "Duyệt xem podcast",
+    "support": "Hỗ trợ",
+    "list": "Danh sách phát trên Spotify",
+    "download": "Tải xuống",
+    "signup": "Đăng ký",
+    "all": "Hiện tất cả",
+    "login": "Đăng nhập",
+    "company": "Công ty",
+    "about": "Giới thiệu",
+    "job": "Việc làm",
+    "record": "For the Record",
+
+    "communities": "Cộng đồng",
+    "artist": "Dành cho các Nghệ sĩ",
+    "develop": "Nhà phát triển",
+    "ad": "Quảng cáo",
+    "investors": "Nhà đầu tư",
+    "vendor": "Nhà Cung cấp",
+    "useful": "Liên kết hữu ích",
+    "mobile": "Ứng dụng Di động Miễn phí",
+    "preview": "Xem trước Spotify",
+    "signup1": "Đăng ký để nghe không giới hạn các bài hát và podcast với quảng cáo không thường xuyên. Không cần thẻ tín dụng",
+    "signup2": "Đăng ký miễn phí"
+  }
+}

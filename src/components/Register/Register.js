@@ -1,25 +1,23 @@
-import React from "react";
-import { FaFacebook, FaSpotify, FaTwitter } from "react-icons/fa";
+import React, { useState } from "react";
+import FormRe from "./FormRe.js";
+import SideBarRegister from "./SideBarRegister.js";
+import HeaderRegister from "./HeaderRegister.js";
+import ContentRegister from "./ContentRegister.js";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { locales } from "../../i18n/i18n.ts";
+import { FaPlus, FaSpotify } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import { BiLibrary } from "react-icons/bi";
-import { FaPlus } from "react-icons/fa";
 import { GrLanguage } from "react-icons/gr";
-import { GrNext } from "react-icons/gr";
-import { GrPrevious } from "react-icons/gr";
-import { useNavigate } from "react-router-dom";
-import { IoLogoInstagram } from "react-icons/io";
+import Modal from "../Modal/Modal.js";
 
 export default function Register() {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
-  const goToLogin = () => {
-    navigate("/login");
-  };
-
-  const goToSignUp = () => {
-    navigate("/signup");
-  };
+  const currentLanguage = locales[i18n.language];
 
   const goToHome = () => {
     navigate("/");
@@ -29,6 +27,7 @@ export default function Register() {
     navigate("/search");
   };
 
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div
       class="row"
@@ -137,7 +136,7 @@ export default function Register() {
                       cursor: "pointer",
                     }}
                   >
-                    Trang Chủ
+                    {t("register.home")}
                   </span>
                 </div>
               </div>
@@ -163,7 +162,7 @@ export default function Register() {
                       cursor: "pointer",
                     }}
                   >
-                    Tìm kiếm
+                    {t("register.search")}
                   </span>
                 </div>
               </div>
@@ -200,9 +199,9 @@ export default function Register() {
                       cursor: "pointer",
                     }}
                   >
-                    Thư viện
+                    {t("register.library")}
                   </span>
-                  <span style={{ marginLeft: 280 }}>
+                  <span style={{ marginLeft: 275, position: "fixed" }}>
                     <FaPlus style={{ fontWeight: "700", color: "gray" }} />
                   </span>
                 </div>
@@ -227,7 +226,7 @@ export default function Register() {
                           marginTop: 5,
                         }}
                       >
-                        Tạo danh sách phát đầu tiên của bạn
+                        {t("register.create")}
                       </div>
                       <div
                         style={{
@@ -237,7 +236,7 @@ export default function Register() {
                           fontSize: 14,
                         }}
                       >
-                        Rất dễ! Chúng tôi sẽ giúp bạn
+                        {t("register.create1")}
                       </div>
                       <div
                         style={{
@@ -258,7 +257,7 @@ export default function Register() {
                           className="hover-btnRegister"
                           style={{ marginLeft: 10 }}
                         >
-                          Tạo danh sách phát
+                          {t("register.create2")}
                         </span>
                       </div>
                     </div>
@@ -283,7 +282,7 @@ export default function Register() {
                           marginTop: 5,
                         }}
                       >
-                        Hãy cùng tìm và theo dõi một số podcast
+                        {t("register.podcast")}
                       </div>
                       <div
                         style={{
@@ -293,7 +292,7 @@ export default function Register() {
                           fontSize: 14,
                         }}
                       >
-                        Chúng tôi sẽ cập nhật cho bạn thông tin về các tập mới
+                        {t("register.podcast1")}
                       </div>
                       <div
                         style={{
@@ -314,7 +313,7 @@ export default function Register() {
                           className="hover-btnRegister"
                           style={{ marginLeft: 10 }}
                         >
-                          Duyệt xem podcast
+                          {t("register.podcast2")}
                         </span>
                       </div>
                     </div>
@@ -339,12 +338,13 @@ export default function Register() {
                       marginTop: 30,
                       cursor: "pointer",
                     }}
+                    onClick={() => setOpenModal(true)}
                   >
                     <GrLanguage style={{ marginLeft: 10 }} />
                     <span
                       style={{ marginLeft: 2, position: "relative", top: 2 }}
                     >
-                      Tiếng Việt
+                      {currentLanguage}
                     </span>
                   </div>
                 </div>
@@ -354,856 +354,11 @@ export default function Register() {
         </div>
       </div>
       <div class="col-sm-9 " style={{ background: "#121212" }}>
-        <div class="row-sm-12" style={{ height: 74, background: "#121212" }}>
-          <div class="row">
-            <div class="col-sm-3" style={{ height: 74 }}>
-              <div class="row">
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 15,
-                    border: "1px solid black",
-                    color: "gray",
-                    background: "black",
-                    marginLeft: 25,
-                    marginTop: 25,
-                  }}
-                >
-                  <GrPrevious
-                    style={{
-                      width: 16,
-                      height: 16,
-                      position: "relative",
-                      right: 5,
-                    }}
-                  />
-                </div>
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    borderRadius: 15,
-                    border: "1px solid black",
-                    color: "gray",
-                    background: "black",
-                    marginLeft: 5,
-                    marginTop: 25,
-                  }}
-                >
-                  <GrNext
-                    style={{
-                      width: 16,
-                      height: 16,
-                      position: "relative",
-                      right: 5,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3"></div>
-            <div class="col-sm-3">
-              <div class="row">
-                <div
-                  class="col-sm-4"
-                  style={{
-                    height: 74,
-                    display: "flex",
-                    color: "gray",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span className="hover-effect">Premium</span>
-                </div>
-                <div
-                  class="col-sm-4"
-                  style={{
-                    height: 74,
-                    display: "flex",
-                    color: "gray",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span className="hover-effect">Hỗ trợ</span>
-                </div>
-                <div
-                  class="col-sm-4"
-                  style={{
-                    height: 74,
-                    display: "flex",
-                    color: "gray",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span className="hover-effect">Tải xuống</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="row">
-                <div
-                  class="col-sm-1"
-                  style={{
-                    color: "gray",
-
-                    display: "flex",
-
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span style={{ fontSize: 25, marginBottom: 10 }}>|</span>
-                </div>
-                <div
-                  class="col-sm-5"
-                  style={{
-                    height: 74,
-                    display: "flex",
-                    color: "gray",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  onClick={goToSignUp}
-                >
-                  <span
-                    className="hover-effect" // Add the class to apply the hover effect
-                  >
-                    Đăng ký
-                  </span>
-                </div>
-                <div
-                  class="col-sm-6"
-                  style={{
-                    height: 74,
-                    display: "flex",
-                    color: "gray",
-                    textAlign: "center",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span style={{ fontSize: 17, fontWeight: 700 }}>
-                    <div
-                      onClick={goToLogin}
-                      className="hover-effect"
-                      style={{
-                        width: 150,
-                        height: 47,
-                        borderRadius: 25,
-                        border: "1px solid white",
-                        color: "black",
-                        background: "white",
-                        display: "flex",
-                        textAlign: "center",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        marginRight: 50,
-                      }}
-                    >
-                      Đăng nhập
-                    </div>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="row"
-          style={{
-            height: 392,
-            width: "100%",
-            background: "linear-gradient(to bottom, #1F1F1F, #121212)",
-          }}
-        >
-          <div class="row" style={{ height: 40 }}>
-            <div
-              class="col-sm-11"
-              style={{
-                color: "white",
-                fontSize: 23,
-                fontWeight: 700,
-                height: 40,
-              }}
-            >
-              <span className="hover-letter" style={{ marginLeft: 15 }}>
-                Danh sách phát trên Spotify
-              </span>
-            </div>
-            <div
-              class="col-sm-1"
-              style={{
-                color: "gray",
-                fontSize: 16,
-                fontWeight: 700,
-                height: 40,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                textAlign: "center",
-              }}
-            >
-              <span className="hover-letter" style={{ color: "gray" }}>
-                Hiện tất cả
-              </span>
-            </div>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{
-              width: 183,
-              height: 266,
-              background: "#181818",
-              border: "1px",
-              marginLeft: 25,
-              marginBottom: 83,
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            <img
-              src="https://cdn.dribbble.com/users/406097/screenshots/16700960/media/eb025f63696f45511650b4b97189e28f.jpg?resize=450x338&vertical=center"
-              alt=""
-              style={{
-                height: "60%",
-                width: "90%",
-                borderRadius: 5,
-                marginTop: 15,
-                marginBottom: 83,
-                padding: 0,
-                marginLeft: 8,
-              }}
-            />
-
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "white",
-                padding: 0,
-                marginLeft: 6,
-              }}
-            >
-              lofi beats
-            </span>
-            <span
-              style={{
-                position: "relative",
-                bottom: 70,
-                color: "gray",
-                padding: 0,
-                fontSize: 14,
-                fontWeight: 500,
-                marginLeft: 6,
-              }}
-            >
-              chill beats, lofi vibes, new tracks every...
-            </span>
-          </div>
-          <div
-            class="row"
-            style={{ marginTop: 30, marginLeft: 15, width: 1616, height: 363 }}
-          >
-            <div class="col-sm-2">
-              <div class="row">
-                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
-                  Công ty
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    marginTop: 10,
-                    cursor: "pointer",
-                  }}
-                >
-                  Giới thiệu
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Việc làm
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  For the record
-                </span>
-              </div>
-            </div>
-            <div class="col-sm-2">
-              <div class="row">
-                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
-                  Cộng đồng
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    marginTop: 10,
-                    cursor: "pointer",
-                  }}
-                >
-                  Dành cho các nghệ sĩ
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Nhà phát triển
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Quảng cáo
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Nhà đầu tư
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Nhà cung cấp
-                </span>
-              </div>
-            </div>
-            <div class="col-sm-2">
-              <div class="row">
-                <span style={{ color: "white", fontWeight: 700, height: 22 }}>
-                  Liên kết hữu ích
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    marginTop: 10,
-                    cursor: "pointer",
-                  }}
-                >
-                  Hỗ trợ
-                </span>
-                <span
-                  style={{
-                    color: "gray",
-                    fontWeight: 500,
-                    height: 30,
-                    cursor: "pointer",
-                  }}
-                >
-                  Ứng dụng di động miễn phí
-                </span>
-              </div>
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-2">
-              <div
-                class="row"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-
-                  gap: 15,
-                }}
-              >
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    border: 1,
-                    borderRadius: "50%",
-                    color: "white",
-                    background: "#292929",
-                    display: "flex",
-                    alignItems: "center",
-                    textAlign: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span>
-                    <IoLogoInstagram
-                      style={{
-                        width: 25,
-                        height: 25,
-                      }}
-                    />
-                  </span>
-                </div>
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    border: 1,
-                    borderRadius: "50%",
-                    color: "white",
-                    background: "#292929",
-                    display: "flex",
-                    alignItems: "center",
-                    textAlign: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span>
-                    <FaTwitter
-                      style={{
-                        width: 22,
-                        height: 22,
-                      }}
-                    />
-                  </span>
-                </div>
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    border: 1,
-                    borderRadius: "50%",
-                    color: "white",
-                    background: "#292929",
-                    display: "flex",
-                    alignItems: "center",
-                    textAlign: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <span>
-                    <FaFacebook
-                      style={{
-                        width: 22,
-                        height: 22,
-                      }}
-                    />
-                  </span>
-                </div>
-              </div>
-            </div>
-            <hr style={{ color: "white", marginTop: 20 }} />
-            <div
-              style={{
-                height: 46,
-                display: "flex",
-                textAlign: "center",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <span
-                style={{
-                  fontSize: 14,
-                  color: "gray",
-                }}
-              >
-                © 2024 Spotify AB
-              </span>
-            </div>
-            <div style={{ height: 450 }}></div>
-          </div>
-        </div>
+        <HeaderRegister />
+        <ContentRegister />
       </div>
-      <div
-        class="col"
-        style={{
-          color: "white",
-          height: 66,
-          width: "100%",
-          background: "linear-gradient(to right, #ae2896, #509af4)",
-          position: "absolute",
-          bottom: 10,
-        }}
-      >
-        <div
-          style={{
-            padding: 5,
-            fontSize: 14,
-            fontWeight: 700,
-            marginTop: 2,
-            cursor: "pointer",
-          }}
-        >
-          Xem trước Spotify
-        </div>
-        <div style={{ marginLeft: 3, fontWeight: 500, cursor: "pointer" }}>
-          Đăng ký để xem không giới hạn các bài hát và postcast với quảng cáo
-          không thường xuyên. Không cần thẻ tín dụng.
-        </div>
-        <div
-          style={{
-            position: "relative",
-            bottom: 45,
-            left: 1700,
-            color: "black",
-            height: 45,
-            width: 180,
-            borderRadius: 25,
-            border: 1,
-            background: "white",
-            fontSize: 16,
-            fontWeight: "bolder",
-            display: "flex",
-            textAlign: "center",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-          }}
-          onClick={goToSignUp}
-        >
-          <span> Đăng ký miễn phí</span>
-        </div>
-      </div>
+      <FormRe />
+      <Modal open={openModal} onClose={() => setOpenModal(false)} />
     </div>
   );
 }

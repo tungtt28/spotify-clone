@@ -1,0 +1,35 @@
+{
+  "register": {
+    "home": "Home",
+    "search": "Search",
+    "library": "Your Library",
+    "create": "Create your first playlist",
+    "create1": "It's easy, we'll help you",
+    "create2": "Create playlist",
+    "podcast": "Let's find some podcasts to follow",
+    "podcast1": "We'll keep you updated on new episodes",
+    "podcast2": "Browse podcasts",
+    "support": "Support",
+    "list": "Spotify Playlists",
+    "download": "Download",
+    "all": "Show all",
+    "signup": "Sign up",
+    "login": "Log in",
+    "company": "Company",
+    "about": "About",
+    "job": "Jobs",
+    "record": "For the Record",
+
+    "communities": "Communities",
+    "artist": "For Artists",
+    "develop": "Developers",
+    "ad": "Advertising",
+    "investors": "Investors",
+    "vendor": "Vendors",
+    "useful": "Useful links",
+    "mobile": "Free Mobile App",
+    "preview": "Preview of Spotify",
+    "signup1": "Sign up to get unlimited songs and podcasts with occasinal ads. No credit card needed.",
+    "signup2": "Sign up free"
+  }
+}

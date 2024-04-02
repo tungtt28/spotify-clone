@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { FaApple } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth, provider } from "../../firebase/firebase";
+import { signInWithPopup } from "firebase/auth";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -11,6 +18,40 @@ export default function SignUp() {
   const goToLogin = () => {
     navigate("/login"); // Replace "/login" with the actual path to your login page
   };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((authUser) => {
+        signInWithEmailAndPassword(auth, email, password).then(() =>
+          updateProfile(auth.currentUser, {
+            displayName: username,
+          }).then(() => {
+            navigate("/");
+          })
+        );
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  const [value, setValue] = useState("");
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email);
+      localStorage.setItem("email", data.user.email);
+      navigate("/");
+    });
+  };
+
+  useEffect(() => {
+    setValue(localStorage.getItem("email"));
+  });
+
   return (
     <div
       style={{
@@ -98,8 +139,8 @@ export default function SignUp() {
               <div
                 style={{
                   width: 324,
-                  height: 176,
-                  marginTop: 40,
+                  height: 376,
+                  marginTop: 20,
                 }}
               >
                 <span
@@ -112,7 +153,59 @@ export default function SignUp() {
                   Địa chỉ email
                 </span>
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@domain.com"
+                  style={{
+                    height: 48,
+                    width: 324,
+                    border: "1px solid gray",
+                    borderRadius: 5,
+                    background: "#121212",
+                    marginTop: 5,
+                    color: "white",
+                    textIndent: 10,
+                  }}
+                  value={email}
+                />
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: 14,
+                    fontWeight: 700,
+                  }}
+                >
+                  Username
+                </span>
+                <input
+                  onChange={(e) => setUsername(e.target.value)}
+                  type="email"
+                  placeholder="Username"
+                  value={username}
+                  style={{
+                    height: 48,
+                    width: 324,
+                    border: "1px solid gray",
+                    borderRadius: 5,
+                    background: "#121212",
+                    marginTop: 5,
+                    color: "white",
+                    textIndent: 10,
+                  }}
+                />
+                <span
+                  style={{
+                    color: "white",
+                    fontSize: 14,
+                    fontWeight: 700,
+                  }}
+                >
+                  Mật khẩu
+                </span>
+                <input
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                  value={password}
                   style={{
                     height: 48,
                     width: 324,
@@ -150,6 +243,7 @@ export default function SignUp() {
                     alignItems: "center",
                     marginTop: 20,
                   }}
+                  onClick={handleSignUp}
                 >
                   <span
                     style={{
@@ -238,8 +332,9 @@ export default function SignUp() {
                           style={{
                             marginRight: 50,
                           }}
+                          onClick={handleClick}
                         >
-                          Tiếp tục bằng Google
+                          Đăng ký bằng Google
                         </span>
                       </div>
                     </div>
@@ -288,7 +383,7 @@ export default function SignUp() {
                             marginRight: 50,
                           }}
                         >
-                          Tiếp tục bằng Facebook
+                          Đăng ký bằng Facebook
                         </span>
                       </div>
                     </div>
@@ -318,6 +413,7 @@ export default function SignUp() {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
+                        cursor: "pointer",
                       }}
                     >
                       <div class="col-sm-3">
@@ -334,7 +430,7 @@ export default function SignUp() {
                             marginRight: 50,
                           }}
                         >
-                          Tiếp tục bằng Apple
+                          Đăng ký bằng Apple
                         </span>
                       </div>
                     </div>

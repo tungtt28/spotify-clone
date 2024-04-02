@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { SiFacebook } from "react-icons/si";
 import { FaApple } from "react-icons/fa6";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import {
+  FacebookAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth, provider } from "../../firebase/firebase";
 
 export default function Login() {
   const [isChecked, setIsChecked] = useState(false);
@@ -17,6 +23,55 @@ export default function Login() {
   const goToSignUp = () => {
     navigate("/signup"); // Replace "/login" with the actual path to your login page
   };
+
+  const goToForgetPassword = () => {
+    navigate("/resetpassword");
+  };
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      console.error("Email and password are required.");
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Login successful, navigate to home page
+        navigate("/");
+      })
+      .catch((error) => {
+        // Handle login error
+        console.error("Login failed:", error.message);
+        // Hiển thị thông báo lỗi cho người dùng
+        alert("Login failed. Please check your email and password.");
+      });
+  };
+
+  const [value, setValue] = useState("");
+  const handleLoginEmail = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email);
+      localStorage.setItem("email", data.user.email);
+      navigate("/");
+    });
+  };
+
+  const signInWithFacebook = async () => {
+    try {
+      const provider = new FacebookAuthProvider();
+
+      const result = await signInWithPopup(auth, provider);
+
+      console.log("LOGGED USER", result.user);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       style={{
@@ -141,6 +196,7 @@ export default function Login() {
                       style={{
                         marginRight: 50,
                       }}
+                      onClick={handleLoginEmail}
                     >
                       Tiếp tục bằng Google
                     </span>
@@ -174,6 +230,7 @@ export default function Login() {
                     justifyContent: "center",
                     alignItems: "center",
                   }}
+                  onClick={signInWithFacebook}
                 >
                   <div class="col-sm-3">
                     <SiFacebook
@@ -304,6 +361,8 @@ export default function Login() {
                     Email hoặc tên người dùng
                   </div>
                   <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
                     placeholder="Email hoặc tên người dùng"
                     class="col-sm-12"
                     style={{
@@ -318,7 +377,7 @@ export default function Login() {
                       fontSize: 15,
                       fontWeight: "500",
                     }}
-                  ></input>
+                  />
                   <div
                     class="col-sm-12"
                     style={{
@@ -331,7 +390,9 @@ export default function Login() {
                     Mật khẩu
                   </div>
                   <input
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Mật khẩu"
+                    type="password"
                     class="col-sm-12"
                     style={{
                       height: 48,
@@ -346,7 +407,7 @@ export default function Login() {
                       fontWeight: "500",
                       position: "relative",
                     }}
-                  ></input>
+                  />
                 </div>
                 <div
                   style={{
@@ -433,6 +494,7 @@ export default function Login() {
                     bottom: 80,
                     cursor: "pointer",
                   }}
+                  onClick={handleLogin}
                 >
                   <span>Đăng nhập</span>
                 </div>
@@ -448,6 +510,7 @@ export default function Login() {
                     bottom: 50,
                     cursor: "pointer",
                   }}
+                  onClick={goToForgetPassword}
                 >
                   Quên mật khẩu của bạn
                 </span>
